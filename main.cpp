@@ -46,6 +46,7 @@ int main(){
     string firstName, lastName, province, s_cgpa, s_researchScore;
     float cgpa;
     int researchScore;
+    int app_id = 20210000 + stu_count;
 
     //get firstName separated by comma
     getline(ss, firstName, ',');
@@ -64,6 +65,18 @@ int main(){
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
 
+    if (stu_count == 1) {
+
+        DomesticStudent ds1(firstName, lastName, cgpa, researchScore, app_id);
+
+    }
+
+    if (stu_count == 2) {
+
+        DomesticStudent ds2(firstName, lastName, cgpa, researchScore, app_id);
+
+    }
+
     //print the student info to the screen
     cout << "Domestic student " << stu_count << " " << firstName << " " 
 	 << lastName << " from " << province << " province has cgpa of "
@@ -75,7 +88,77 @@ int main(){
   //close your file
   domesticFile.close();
 
+
+
+  //Read the domestic-stu.txt file and exit if failed
+  string line_i;
+  ifstream internationalFile("international-stu.txt");
+  if (!internationalFile.is_open()) {
+      cout << "Unable to open file international-stu.txt" << endl;
+      return -1;
+  }
+
+  //Read the first line of domestic-stu.txt, which specifies
+  //the file format. And then print it out to the screen
+  getline(internationalFile, line_i);
+  cout << "File format: " << line_i << endl;
+
+  /*Keep reading the rest of the lines in domestic-stu.txt.
+   *In the example code here, I will read each data separated
+   *by a comma, and then print it out to the screen.
+   *In your lab assignment 1, you should use these read data
+   *to initialize your DomesticStudent object. Then you can
+   *use get and set functions to manipulate your object, and
+   *print the object content to the screen
+   */
+  int stu_count_i = 1;
+  while (getline(internationalFile, line_i)) {
+      /*process each line, get each field separated by a comma.
+       *We use istringstream to handle it.
+       *Note in this example code here, we assume the file format
+       *is perfect and do NOT handle error cases. We will leave the
+       *error and exception handling of file format to Lab Assignment 4
+       */
+      istringstream ss_i(line_i);
+
+      string FirstName, LastName, Country, CGPA, ResearchScore, Reading, Listening, Speaking, Writing;
+      float cgpa_i;
+      int researchScore_i;
+
+      //get firstName separated by comma
+      getline(ss_i, FirstName, ',');
+
+      //get lastName separated by comma
+      getline(ss_i, LastName, ',');
+
+      //get province separated by comma
+      getline(ss_i, Country, ',');
+
+      //get cpga separated by comma, and convert string to float
+      getline(ss_i, CGPA, ',');
+      cgpa_i = atof(CGPA.c_str());
+
+      //get researchScore separated by comma, and convert it to int
+      getline(ss_i, ResearchScore, ',');
+      researchScore_i = atoi(ResearchScore.c_str());
+
+      //print the student info to the screen
+      cout << "Internatinal student " << stu_count_i << " " << FirstName << " "
+          << LastName << " from " << Country << " has cgpa of "
+          << CGPA << ", and research score of " << ResearchScore << endl;
+
+      stu_count_i++;
+  }
+
+  //close your file
+  internationalFile.close();
+
+
+
+  
+  
+  
   return 0;
 
-  //
+  
 }
