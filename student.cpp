@@ -1,7 +1,8 @@
-//student.cpp to implement your classes
+// student.cpp to implement your classes
 #include "student.hpp"
 
 //STUDENT FUNCTIONS ---------------------------------------------------------------------------
+
 
 //constructors
 Student::Student() {
@@ -73,7 +74,7 @@ void Student::setApplicationID(int newApplicationID) {
 
 //friend "compare" functions (CGPA, ResearchScore, FirstName, LastName)
 string compareCGPA(const Student& stu1, const Student& stu2) {
-	
+
 	//check if equal
 	if (stu1.cgpa == stu2.cgpa) {
 		return "=";
@@ -108,7 +109,7 @@ string compareResearchScore(const Student& stu1, const Student& stu2) {
 }
 
 string compareFirstName(const Student& stu1, const Student& stu2) {
-	
+
 	//convert to lowercase
 	string name1;
 	string name2;
@@ -122,7 +123,7 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 	//find length
 	int length;
-	
+
 	if (stu1.firstName.length() > stu2.firstName.length()) {
 		length = stu1.firstName.length();
 	}
@@ -136,12 +137,12 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 	//check for alphabetical order
 	for (int i = 0; i < length; i++) {
-		
+
 		//check characters if ">"
 		if (name1[i] > name2[i]) {
 			return ">";
 		}
-		
+
 		//check characters if "<"
 		if (name1[i] < name2[i]) {
 			return "<";
@@ -152,7 +153,7 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 	//if the program has reached this point, both names are identical up until 
 	//the length of the shortest name
-	
+
 	//return ">", "<", or "=" depending on which name is the shortest
 	if (stu1.firstName.length() > stu2.firstName.length()) {
 		return ">";
@@ -164,7 +165,7 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 		//if both have the same length, the names are identical
 		return "=";
 	}
-	
+
 }
 
 string compareLastName(const Student& stu1, const Student& stu2) {
@@ -264,8 +265,10 @@ InternationalStudent::InternationalStudent() {
 
 InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
 	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
-	
+
 }
+
+
 
 
 
@@ -303,7 +306,7 @@ bool ToeflScore::setReading(int newReading) {
 	else {
 		return false;
 	}
-	
+
 }
 
 int ToeflScore::getListening() {
@@ -351,4 +354,5 @@ int ToeflScore::getTotalScore() {
 
 void ToeflScore::setTotalScore() {
 	this->totalScore = this->reading + this->listening + this->speaking + this->writing;
+
 }
