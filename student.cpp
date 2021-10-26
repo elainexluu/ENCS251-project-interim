@@ -270,9 +270,16 @@ InternationalStudent::InternationalStudent(string _firstName, string _lastName, 
 
 }
 
-int InternationalStudent::getToefl_total()
+ToeflScore InternationalStudent::getToefl()
 {
-	return toefl.getTotalScore();
+	return toefl;
+}
+
+void InternationalStudent::setToefl(ToeflScore newToefl)
+{
+
+	toefl = newToefl;
+
 }
 
 

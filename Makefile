@@ -1,4 +1,4 @@
-#compile and link the application
+#compile and then link the application
 all: main
 
 #run the application

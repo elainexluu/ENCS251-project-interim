@@ -106,7 +106,7 @@ public:
 	void setCountry(string newCountry);
 
 	//get,set toefl
-	int getToefl_total();
+	ToeflScore getToefl();
 	void setToefl(ToeflScore newToefl);
 
 private:
