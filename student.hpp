@@ -1,7 +1,42 @@
+#ifndef student_hpp
+#define student_hpp
+
 //header file student.hpp to declare your classes
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 
+
+class ToeflScore {
+public:
+	ToeflScore();
+	ToeflScore(int _reading, int _listening, int _speaking, int _writing);
+
+
+	//get,set functions			//set functions are bool, as 0 <= (new value) <= 30
+	int getReading();
+	bool setReading(int newReading);
+
+	int getListening();
+	bool setListening(int newListening);
+
+	int getSpeaking();
+	bool setSpeaking(int newSpeaking);
+
+	int getWriting();
+	bool setWriting(int newWriting);
+
+	int getTotalScore();
+	void setTotalScore();		//total score is the sum of all fields
+								//therefore, this function sets total score
+								//to the current sum of all fields
+
+private:
+	int reading = 0;
+	int listening = 0;
+	int speaking = 0;
+	int writing = 0;
+	int totalScore = 0;
+};
 
 class Student {
 public:
@@ -71,42 +106,14 @@ public:
 	void setCountry(string newCountry);
 
 	//get,set toefl
-	//ToeflScore getToefl();
-	//void setToefl(ToeflScore newToefl);
+	int getToefl_total();
+	void setToefl(ToeflScore newToefl);
 
 private:
 	string country;
 	ToeflScore toefl;
 };
 
-class ToeflScore {
-public:
-	ToeflScore();
-	ToeflScore(int _reading, int _listening, int _speaking, int _writing);
 
 
-	//get,set functions			//set functions are bool, as 0 <= (new value) <= 30
-	int getReading();
-	bool setReading(int newReading);
-
-	int getListening();
-	bool setListening(int newListening);
-
-	int getSpeaking();
-	bool setSpeaking(int newSpeaking);
-
-	int getWriting();
-	bool setWriting(int newWriting);
-
-	int getTotalScore();
-	void setTotalScore();		//total score is the sum of all fields
-								//therefore, this function sets total score
-								//to the current sum of all fields
-
-private:
-	int reading = 0;
-	int listening = 0;
-	int speaking = 0;
-	int writing = 0;
-	int totalScore = 0;
-};
+#endif

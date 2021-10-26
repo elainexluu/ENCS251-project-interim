@@ -242,7 +242,9 @@ DomesticStudent::DomesticStudent() {
 }
 
 DomesticStudent::DomesticStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
+
 	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
+
 }
 
 string DomesticStudent::getProvince() {
@@ -266,6 +268,11 @@ InternationalStudent::InternationalStudent() {
 InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
 	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
 
+}
+
+int InternationalStudent::getToefl_total()
+{
+	return toefl.getTotalScore();
 }
 
 
