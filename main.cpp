@@ -74,6 +74,8 @@ int main(){
 
     DomesticStudent ds1(firstName, lastName, cgpa, researchScore, app_id);
 
+    ds1.setProvince(province);
+
     it = domestic_students_vector.end();
     it = domestic_students_vector.insert(it, ds1);
     
