@@ -1,5 +1,6 @@
 // student.cpp to implement your classes
 #include "student.hpp"
+#include <iostream>
 
 //STUDENT FUNCTIONS ---------------------------------------------------------------------------
 
@@ -147,6 +148,9 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 		//check characters if ">"
 		if (name1[i] > name2[i]) {
+
+			//cout << name1[i] << " " << name2[i];
+
 			return ">";
 		}
 

@@ -196,13 +196,19 @@ int main(){
   //close your file
   internationalFile.close();
 
-  unsigned r = 0;
+
 
   
   cout << endl << domestic_students_vector.at(0);
   cout << endl << international_students_vector.at(0);
 
+  string w = compareCGPA(domestic_students_vector.at(0), domestic_students_vector.at(1));
 
+  cout << w << endl;
+
+  w = compareResearchScore(domestic_students_vector.at(0), domestic_students_vector.at(1));
+
+  cout << w;
 
   
   
