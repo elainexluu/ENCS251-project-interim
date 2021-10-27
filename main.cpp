@@ -183,10 +183,12 @@ int main(){
       it_i = international_students_vector.end();
       it_i = international_students_vector.insert(it_i, is1);
 
+      toefl1.setTotalScore();
+
       //print the student info to the screen
       cout << "Internatinal student " << stu_count_i << " " << FirstName << " "
           << LastName << " from " << Country << " has cgpa of "
-          << CGPA << ", and research score of " << ResearchScore << endl;
+          << CGPA << ", and research score of " << ResearchScore << " and his/her total TOEFL score is " << toefl1.getTotalScore() << endl;
 
       stu_count_i++;
   }

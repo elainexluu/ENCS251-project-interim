@@ -387,6 +387,8 @@ bool ToeflScore::setWriting(int newWriting) {
 }
 
 int ToeflScore::getTotalScore() {
+
+
 	return this->totalScore;
 }
 
@@ -415,6 +417,13 @@ ostream& operator<<(ostream& out, const DomesticStudent& p)
 ostream& operator<<(ostream& out, const InternationalStudent& p)
 {
 
+	ToeflScore t = p.toefl;
+
+	t.setTotalScore();
+
+	int x = t.getTotalScore();
+
+
 	out << "Name of International student : " << p.applicationID - 20210100 << " is " << p.firstName << " " << p.lastName << endl;
 
 	out << "His/Her CGPA " << " is " << p.cgpa << endl;
@@ -422,6 +431,9 @@ ostream& operator<<(ostream& out, const InternationalStudent& p)
 	out << "His/Her Research Score is " << p.researchScore << endl;
 
 	out << "He/She is from " << p.country << endl;
+
+	out << "His/Her TOEFL total score is " << x << endl;
+
 
 	return out;
 }
