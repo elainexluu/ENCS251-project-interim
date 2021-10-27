@@ -13,7 +13,26 @@
  *and manipulating classes and objects
  */
 
+void main_menu()
+{
+  cout << "\nPlease choose a student category:" << endl;
+  cout << "1) Domestic Sudent" << endl;
+  cout << "2) International Student" << endl;
+}
+
+// function that displays the option menu
+void option_menu()
+{
+  // CGPA, research score, first name, last name
+  cout << "\nPlease choose an option you would like to sort by:" << endl;
+  cout << "a) Sort by first name" << endl;
+  cout << "b) Sort by last name" << endl;
+  cout << "c) Sort by CGPA" << endl;
+  cout << "d) Sort by research score" << endl;
+}
+
 int main(){
+
   //Read the domestic-stu.txt file and exit if failed
   string line;
   ifstream domesticFile("domestic-stu.txt");
@@ -197,22 +216,96 @@ int main(){
   internationalFile.close();
 
 
-
-  
   cout << endl << domestic_students_vector.at(0);
   cout << endl << international_students_vector.at(0);
 
   string w = compareCGPA(domestic_students_vector.at(0), domestic_students_vector.at(1));
 
   cout << w << endl;
+  cout << endl << international_students_vector.size();
 
   w = compareResearchScore(domestic_students_vector.at(0), domestic_students_vector.at(1));
 
   cout << w;
 
-  
+  ////////////////////////// USER MENU /////////////////////////////////
+
+  cout << "\n-------------------------------------------------------------------" << endl;
+  cout << "\tWelcome to the Graduate Student Admission system!" << endl;
+  cout << "-------------------------------------------------------------------" << endl;
+
+  string stu_input;
+  string stu_sort_input;
+  string sys_cont;
+
+  main_menu();
+
+  cin >> stu_input;
+
+  option_menu();
+  cin >> stu_sort_input;
+
+  // implement while loop here
+
+  // Domestic student 
+  if (stu_input == "1"){
+    //cout << "DomesticStudent chosen" << endl;
+
+    if (stu_sort_input == "a")
+    {
+      // sort first name
+    }
+    else if (stu_sort_input == "b")
+    {
+      // sort last name
+    }
+    else if (stu_sort_input == "c")
+    {
+      // sort CGPA
+    }
+    else if (stu_sort_input == "d")
+    {
+      // sort research score
+    }
+    else
+    {
+      cout << "\nPlease choose a valid option" << endl;
+      option_menu();
+    }
+  }
+
+  // International student
+  else if (stu_input == "2")
+  {
+    //cout << "InternationalStudent chosen" << endl;
+
+    if (stu_sort_input == "a")
+    {
+      // sort first name
+    }
+    else if (stu_sort_input == "b")
+    {
+      // sort last name
+    }
+    else if (stu_sort_input == "c")
+    {
+      // sort cgpa
+    }
+    else if (stu_sort_input == "d")
+    {
+      // sort research score
+    }
+    else
+    {
+      cout << "\nPlease choose a valid option" << endl;
+      option_menu();
+    }
+  }
+  else{
+    cout << "\nPlease choose a valid option" << endl;
+    option_menu();
+  }
   
   return 0;
 
-  
 }
