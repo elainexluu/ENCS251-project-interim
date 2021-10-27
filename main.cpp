@@ -137,6 +137,8 @@ int main(){
       int listening;
       int speaking;
       int writing;
+      int app_id_i = 20210100 + stu_count_i;
+
 
       //get firstName separated by comma
       getline(ss_i, FirstName, ',');
@@ -171,9 +173,8 @@ int main(){
       getline(ss_i, Writing, ',');
       writing = atoi(Writing.c_str());
 
-      int application_id = 20210000 + stu_count;
 
-      InternationalStudent is1(FirstName, LastName, cgpa_i, researchScore_i, application_id);
+      InternationalStudent is1(FirstName, LastName, cgpa_i, researchScore_i, app_id_i);
 
       is1.setCountry(Country);
       ToeflScore toefl1(reading, listening, speaking, writing);
@@ -197,7 +198,7 @@ int main(){
 
   
   cout << endl << domestic_students_vector.at(0);
-  cout << endl << international_students_vector.size();
+  cout << endl << international_students_vector.at(0);
 
 
 

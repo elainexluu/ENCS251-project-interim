@@ -276,10 +276,10 @@ InternationalStudent::InternationalStudent() {
 
 }
 
-InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
+InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) : Student(_firstName, _lastName, _cgpa, _researchScore, _appID) {
 
 
-	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
+	
 
 }
 
@@ -410,4 +410,18 @@ ostream& operator<<(ostream& out, const DomesticStudent& p)
 
 	return out;
 
+}
+
+ostream& operator<<(ostream& out, const InternationalStudent& p)
+{
+
+	out << "Name of International student : " << p.applicationID - 20210100 << " is " << p.firstName << " " << p.lastName << endl;
+
+	out << "His/Her CGPA " << " is " << p.cgpa << endl;
+
+	out << "His/Her Research Score is " << p.researchScore << endl;
+
+	out << "He/She is from " << p.country << endl;
+
+	return out;
 }

@@ -117,7 +117,10 @@ public:
 	ToeflScore getToefl();
 	void setToefl(ToeflScore newToefl);
 
-private:
+	friend ostream& operator <<(ostream& out, const InternationalStudent& p);
+
+
+protected:
 	string country;
 	ToeflScore toefl;
 };
