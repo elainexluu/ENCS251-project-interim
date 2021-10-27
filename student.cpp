@@ -270,6 +270,17 @@ InternationalStudent::InternationalStudent(string _firstName, string _lastName, 
 
 }
 
+string InternationalStudent::getCountry()
+{
+	return country;
+}
+
+void InternationalStudent::setCountry(string newCountry)
+{
+
+	country = newCountry;
+}
+
 ToeflScore InternationalStudent::getToefl()
 {
 	return toefl;

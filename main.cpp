@@ -4,6 +4,7 @@
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
+#include <vector>
 #include "student.hpp"
 #include "stu_sort.hpp"
 
@@ -11,6 +12,7 @@
  *data from a file, so that you can focus on creating
  *and manipulating classes and objects
  */
+
 int main(){
   //Read the domestic-stu.txt file and exit if failed
   string line;
@@ -33,6 +35,10 @@ int main(){
    *use get and set functions to manipulate your object, and
    *print the object content to the screen
    */
+
+  vector <DomesticStudent> domestic_students_vector;
+  vector <DomesticStudent>::iterator it;
+
   int stu_count = 1;
   while( getline(domesticFile, line) ) {
     /*process each line, get each field separated by a comma.
@@ -65,17 +71,12 @@ int main(){
     getline(ss, s_researchScore, ',');
     researchScore = atoi(s_researchScore.c_str());
 
-    if (stu_count == 1) {
 
-        DomesticStudent ds1(firstName, lastName, cgpa, researchScore, app_id);
+    DomesticStudent ds1(firstName, lastName, cgpa, researchScore, app_id);
 
-    }
-
-    if (stu_count == 2) {
-
-        DomesticStudent ds2(firstName, lastName, cgpa, researchScore, app_id);
-
-    }
+    it = domestic_students_vector.end();
+    it = domestic_students_vector.insert(it, ds1);
+    
 
     //print the student info to the screen
     cout << "Domestic student " << stu_count << " " << firstName << " " 
@@ -111,6 +112,12 @@ int main(){
    *use get and set functions to manipulate your object, and
    *print the object content to the screen
    */
+
+
+  vector <InternationalStudent> international_students_vector;
+  vector <InternationalStudent>::iterator it_i;
+
+
   int stu_count_i = 1;
   while (getline(internationalFile, line_i)) {
       /*process each line, get each field separated by a comma.
@@ -124,6 +131,10 @@ int main(){
       string FirstName, LastName, Country, CGPA, ResearchScore, Reading, Listening, Speaking, Writing;
       float cgpa_i;
       int researchScore_i;
+      int reading;
+      int listening;
+      int speaking;
+      int writing;
 
       //get firstName separated by comma
       getline(ss_i, FirstName, ',');
@@ -142,6 +153,33 @@ int main(){
       getline(ss_i, ResearchScore, ',');
       researchScore_i = atoi(ResearchScore.c_str());
 
+      //get Reading separated by comma, and convert it to int
+      getline(ss_i, Reading, ',');
+      reading = atoi(Reading.c_str());
+
+      //get Listening separated by comma, and convert it to int
+      getline(ss_i, Listening, ',');
+      listening = atoi(Listening.c_str());
+
+      //get Speaking separated by comma, and convert it to int
+      getline(ss_i, Speaking, ',');
+      speaking = atoi(Speaking.c_str());
+
+      //get Writing separated by comma, and convert it to int
+      getline(ss_i, Writing, ',');
+      writing = atoi(Writing.c_str());
+
+      int application_id = 20210000 + stu_count;
+
+      InternationalStudent is1(FirstName, LastName, cgpa_i, researchScore_i, application_id);
+
+      is1.setCountry(Country);
+      ToeflScore toefl1(reading, listening, speaking, writing);
+      is1.setToefl(toefl1);
+
+      it_i = international_students_vector.end();
+      it_i = international_students_vector.insert(it_i, is1);
+
       //print the student info to the screen
       cout << "Internatinal student " << stu_count_i << " " << FirstName << " "
           << LastName << " from " << Country << " has cgpa of "
@@ -155,7 +193,11 @@ int main(){
 
 
 
-  
+  cout << endl << domestic_students_vector.size();
+  cout << endl << international_students_vector.size();
+
+
+
   
   
   return 0;
