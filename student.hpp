@@ -4,6 +4,8 @@
 //header file student.hpp to declare your classes
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
+#include <sstream>
+
 
 
 class ToeflScore {
@@ -74,7 +76,9 @@ public:
 
 	friend string compareLastName(const Student& stu1, const Student& stu2);
 
-private:
+
+
+protected:
 	string firstName;
 	string lastName;
 	float cgpa;
@@ -91,6 +95,10 @@ public:
 	//get,set province
 	string getProvince();
 	void setProvince(string newProvince);
+
+	friend ostream& operator <<(ostream& out, const DomesticStudent& p);
+
+
 
 private:
 	string province;

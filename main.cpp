@@ -193,9 +193,10 @@ int main(){
   //close your file
   internationalFile.close();
 
+  unsigned r = 0;
 
-
-  cout << endl << domestic_students_vector.size();
+  
+  cout << endl << domestic_students_vector.at(0);
   cout << endl << international_students_vector.size();
 
 

@@ -10,11 +10,18 @@ Student::Student() {
 }
 
 Student::Student(string _firstName, string _lastName, float _cgpa, int _researchScore, int _applicationID) {
-	setFirstName(_firstName);
-	setLastName(_lastName);
-	setCGPA(_cgpa);
-	setResearchScore(_researchScore);
-	setApplicationID(_applicationID);
+	//setFirstName(_firstName);
+
+	 firstName = _firstName;
+	 lastName = _lastName;
+	 cgpa = _cgpa;
+	 researchScore = _researchScore;
+	 applicationID = _applicationID;
+
+	//setLastName(_lastName);
+	//setCGPA(_cgpa);
+	//setResearchScore(_researchScore);
+	//setApplicationID(_applicationID);
 }
 
 //get,set firstName
@@ -234,6 +241,8 @@ string compareLastName(const Student& stu1, const Student& stu2) {
 
 
 
+
+
 //DOMESTIC STUDENT FUNCTIONS ------------------------------------------------------------------
 
 
@@ -241,9 +250,9 @@ DomesticStudent::DomesticStudent() {
 
 }
 
-DomesticStudent::DomesticStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
+DomesticStudent::DomesticStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) : Student(_firstName, _lastName, _cgpa, _researchScore, _appID)
+{
 
-	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
 
 }
 
@@ -258,6 +267,8 @@ void DomesticStudent::setProvince(string newProvince) {
 
 
 
+
+
 //INTERNATIONAL STUDENT FUNCTIONS -------------------------------------------------------------
 
 
@@ -266,6 +277,8 @@ InternationalStudent::InternationalStudent() {
 }
 
 InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) {
+
+
 	Student(_firstName, _lastName, _cgpa, _researchScore, _appID);
 
 }
@@ -379,5 +392,22 @@ int ToeflScore::getTotalScore() {
 
 void ToeflScore::setTotalScore() {
 	this->totalScore = this->reading + this->listening + this->speaking + this->writing;
+
+}
+
+ostream& operator<<(ostream& out, const DomesticStudent& p)
+{
+
+	out << "Name of Domestic student : " << p.applicationID - 20210000 << " is " <<  p.firstName << " " << p.lastName << endl;
+
+	out << "His/Her CGPA " << " is " << p.cgpa << endl;
+
+	out << "His/Her Research Score is " << p.researchScore << endl;
+
+	out << "He/She is from Province: " << p.province << endl;
+
+
+
+	return out;
 
 }
