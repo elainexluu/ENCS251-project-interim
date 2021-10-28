@@ -151,12 +151,12 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 			//cout << name1[i] << " " << name2[i];
 
-			return ">";
+			return "<";
 		}
 
 		//check characters if "<"
 		if (name1[i] < name2[i]) {
-			return "<";
+			return ">";
 		}
 
 		//loop continues if the characters are the same
@@ -167,10 +167,10 @@ string compareFirstName(const Student& stu1, const Student& stu2) {
 
 	//return ">", "<", or "=" depending on which name is the shortest
 	if (stu1.firstName.length() > stu2.firstName.length()) {
-		return ">";
+		return "<";
 	}
 	else if (stu1.firstName.length() < stu2.firstName.length()) {
-		return "<";
+		return ">";
 	}
 	else {
 		//if both have the same length, the names are identical
@@ -210,12 +210,12 @@ string compareLastName(const Student& stu1, const Student& stu2) {
 
 		//check characters if ">"
 		if (name1[i] > name2[i]) {
-			return ">";
+			return "<";
 		}
 
 		//check characters if "<"
 		if (name1[i] < name2[i]) {
-			return "<";
+			return ">";
 		}
 
 		//loop continues if the characters are the same
@@ -226,10 +226,10 @@ string compareLastName(const Student& stu1, const Student& stu2) {
 
 	//return ">", "<", or "=" depending on which name is the shortest
 	if (stu1.lastName.length() > stu2.lastName.length()) {
-		return ">";
+		return "<";
 	}
 	else if (stu1.lastName.length() < stu2.lastName.length()) {
-		return "<";
+		return ">";
 	}
 	else {
 		//if both have the same length, the names are identical
