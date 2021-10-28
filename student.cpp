@@ -404,13 +404,13 @@ void ToeflScore::setTotalScore() {
 ostream& operator<<(ostream& out, const DomesticStudent& p)
 {
 
-	out << "Name of Domestic student : " << p.applicationID - 20210000 << " is " <<  p.firstName << " " << p.lastName << endl;
+	out << "Name of Domestic student: " << p.applicationID - 20210000 << ", is " <<  p.firstName << " " << p.lastName << endl;
 
-	out << "His/Her CGPA " << " is " << p.cgpa << endl;
+	out << "Their CGPA " << " is " << p.cgpa << endl;
 
-	out << "His/Her Research Score is " << p.researchScore << endl;
+	out << "Their Research Score is " << p.researchScore << endl;
 
-	out << "He/She is from Province: " << p.province << endl;
+	out << "They are from Province: " << p.province << endl;
 
 
 
@@ -427,16 +427,16 @@ ostream& operator<<(ostream& out, const InternationalStudent& p)
 
 	int x = t.getTotalScore();
 
+	 
+	out << "Name of International student: " << p.applicationID - 20210100 << ", is " << p.firstName << " " << p.lastName << endl;
 
-	out << "Name of International student : " << p.applicationID - 20210100 << " is " << p.firstName << " " << p.lastName << endl;
+	out << "Their CGPA " << " is " << p.cgpa << endl;
 
-	out << "His/Her CGPA " << " is " << p.cgpa << endl;
+	out << "Their Research Score is " << p.researchScore << endl;
 
-	out << "His/Her Research Score is " << p.researchScore << endl;
+	out << "They are from " << p.country << endl;
 
-	out << "He/She is from " << p.country << endl;
-
-	out << "His/Her TOEFL total score is " << x << endl;
+	out << "Their TOEFL total score is " << x << endl;
 
 
 	return out;

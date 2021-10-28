@@ -66,6 +66,7 @@ int main(){
     //get cpga separated by comma, and convert string to float
     getline(ss, s_cgpa, ',');
     cgpa = atof(s_cgpa.c_str());
+    cgpa = truncf(cgpa * 10) / 10;
     
     //get researchScore separated by comma, and convert it to int
     getline(ss, s_researchScore, ',');
@@ -152,6 +153,8 @@ int main(){
       //get cpga separated by comma, and convert string to float
       getline(ss_i, CGPA, ',');
       cgpa_i = atof(CGPA.c_str());
+      cgpa_i = truncf(cgpa_i * 10) / 10;
+
 
       //get researchScore separated by comma, and convert it to int
       getline(ss_i, ResearchScore, ',');
@@ -186,9 +189,9 @@ int main(){
       toefl1.setTotalScore();
 
       //print the student info to the screen
-      cout << "Internatinal student " << stu_count_i << " " << FirstName << " "
+      cout << "International student " << stu_count_i << " " << FirstName << " "
           << LastName << " from " << Country << " has cgpa of "
-          << CGPA << ", and research score of " << ResearchScore << " and his/her total TOEFL score is " << toefl1.getTotalScore() << endl;
+          << cgpa_i << ", and research score of " << researchScore_i << " and his/her total TOEFL score is " << toefl1.getTotalScore() << endl;
 
       stu_count_i++;
   }
@@ -199,8 +202,8 @@ int main(){
 
 
   
-  cout << endl << domestic_students_vector.at(0);
-  cout << endl << international_students_vector.at(0);
+  cout << endl << domestic_students_vector.at(2);
+  cout << endl << international_students_vector.at(6);
 
   string w = compareFirstName(international_students_vector.at(21), international_students_vector.at(22));
 
