@@ -5,6 +5,7 @@
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
 #include <vector>
+#include <cmath> // truncf
 #include "student.hpp"
 #include "stu_sort.hpp"
 
@@ -13,7 +14,7 @@
  *and manipulating classes and objects
  */
 
-int main(){
+int main() {
   //Read the domestic-stu.txt file and exit if failed
   string line;
   ifstream domesticFile("domestic-stu.txt");
@@ -196,26 +197,52 @@ int main(){
       stu_count_i++;
   }
 
-  //close your file
-  internationalFile.close();
+    //close your file
+    internationalFile.close();
 
 
+    cout << endl << domestic_students_vector.at(2);
+    cout << endl << international_students_vector.at(6);
 
-  
-  cout << endl << domestic_students_vector.at(2);
-  cout << endl << international_students_vector.at(6);
+    string w = compareFirstName(international_students_vector.at(21), international_students_vector.at(22));
 
-  string w = compareFirstName(international_students_vector.at(21), international_students_vector.at(22));
+    cout << w << endl;
 
-  cout << w << endl;
+    w = compareLastName(international_students_vector.at(21), international_students_vector.at(22));
 
-  w = compareLastName(international_students_vector.at(21), international_students_vector.at(22));
+    cout << w;
 
-  cout << w;
+    // TESTING OVERALL SORT FOR DOMESTIC STUDENTS -----------------------------------------------------------------------
 
-  
-  
-  return 0;
+    cout << "\n" << "TESTING OVERALL SORT FOR DOMESTIC STUDENTS " << "\n\n";
 
-  
+        // note that the input vector remains unchanged
+
+    vector<DomesticStudent> sorted_domestic_students_vector;
+
+    sorted_domestic_students_vector = overallSort(domestic_students_vector);
+
+      for (int i = 0; i< sorted_domestic_students_vector.size(); i++) {
+          cout << sorted_domestic_students_vector[i] << endl;
+      }
+
+    cout << "________________________________________" << "\n\n";
+
+    // TESTING OVERALL SORT FOR INTERNATIONAL STUDENTS -----------------------------------------------------------------------
+
+    cout << "TESTING OVERALL SORT FOR INTERNATIONAL STUDENTS" << "\n\n";
+
+    // note that the input vector remains unchanged
+
+    vector<InternationalStudent> sorted_international_students_vector;
+
+    sorted_international_students_vector = overallSort(international_students_vector);
+
+      for (int i = 0; i< sorted_international_students_vector.size(); i++) {
+          cout << sorted_international_students_vector[i] << endl;
+      }
+
+    return 0;
+
+
 }

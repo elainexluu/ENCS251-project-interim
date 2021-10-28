@@ -4,7 +4,6 @@
 
 //STUDENT FUNCTIONS ---------------------------------------------------------------------------
 
-
 //constructors
 Student::Student() {
 
@@ -70,14 +69,6 @@ void Student::setApplicationID(int newApplicationID) {
 	this->applicationID = newApplicationID;
 }
 
-
-
-
-
-
-
-
-
 //FRIEND COMPARE FUNCTIONS --------------------------------------------------------------------
 
 //friend "compare" functions (CGPA, ResearchScore, FirstName, LastName)
@@ -97,6 +88,9 @@ string compareCGPA(const Student& stu1, const Student& stu2) {
 	if (stu1.cgpa < stu2.cgpa) {
 		return "<";
 	}
+    
+    return "null";  // had to add to get rid of error
+                    // non-void function does not return a value in all control paths
 }
 
 string compareResearchScore(const Student& stu1, const Student& stu2) {
@@ -114,6 +108,9 @@ string compareResearchScore(const Student& stu1, const Student& stu2) {
 	if (stu1.researchScore < stu2.researchScore) {
 		return "<";
 	}
+    
+    return "null";  // had to add to get rid of error
+                    // non-void function does not return a value in all control paths
 }
 
 string compareFirstName(const Student& stu1, const Student& stu2) {
@@ -238,17 +235,7 @@ string compareLastName(const Student& stu1, const Student& stu2) {
 
 }
 
-
-
-
-
-
-
-
-
-
 //DOMESTIC STUDENT FUNCTIONS ------------------------------------------------------------------
-
 
 DomesticStudent::DomesticStudent() {
 
@@ -268,9 +255,45 @@ void DomesticStudent::setProvince(string newProvince) {
 }
 
 
+// overloaded < operator
+// compares researchScore, cgpa, province for domestic students
+bool operator <(const DomesticStudent &s1, const DomesticStudent &s2) {
+    
+    // convert provinces to lowercase
+    // from compareFirstName and commpareLastName functions
+    
+    std::string province1;
+    std::string province2;
+    
+    for (int i = 0; i < s1.province.length(); i++) {
+            province1 += tolower(s1.province[i]);
+    }
 
+    for (int i = 0; i < s2.province.length(); i++) {
+            province2 += tolower(s2.province[i]);
+    }
+    
+    if (s2.researchScore < s1.researchScore) {
+        return true;
+    }
+    else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
+        return true;
+    }
+    else if (( (s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa) ) && (province1 < province2 )) {
+        return true;
+    }
+    else
+        return false;
+    
+}
 
-
+// overloaded <= operator
+// compares researchScore, cgpa, province for domestic students
+bool operator <=(const DomesticStudent &s1, const DomesticStudent &s2) {
+    
+    return !(s2 < s1);
+    
+}
 
 
 //INTERNATIONAL STUDENT FUNCTIONS -------------------------------------------------------------
@@ -282,8 +305,6 @@ InternationalStudent::InternationalStudent() {
 
 InternationalStudent::InternationalStudent(string _firstName, string _lastName, float _cgpa, int _researchScore, int _appID) : Student(_firstName, _lastName, _cgpa, _researchScore, _appID) {
 
-
-	
 
 }
 
@@ -310,12 +331,43 @@ void InternationalStudent::setToefl(ToeflScore newToefl)
 
 }
 
+// overloaded < operator
+// compares researchScore, cgpa, country for international students
+bool operator <(const InternationalStudent &s1, const InternationalStudent &s2) {
+    
+    // convert countries to lowercase
+    // from compareFirstName and commpareLastName functions
+    
+    std::string country1;
+    std::string country2;
+    
+    for (int i = 0; i < s1.country.length(); i++) {
+            country1 += tolower(s1.country[i]);
+    }
 
+    for (int i = 0; i < s2.country.length(); i++) {
+            country2 += tolower(s2.country[i]);
+    }
+    
+    if (s2.researchScore < s1.researchScore) {
+        return true;
+    }
+    else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
+        return true;
+    }
+    else if (( (s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa) ) && (country1 < country2 )) {
+        return true;
+    }
+    else
+        return false;
+}
 
+// overloaded <= operator
+// compares researchScore, cgpa, country for international students
+bool operator <=(const InternationalStudent &s1, const InternationalStudent &s2) {
 
-
-
-
+    return !(s2 < s1);
+}
 
 
 //TOEFL SCORE FUNCTIONS -----------------------------------------------------------------------

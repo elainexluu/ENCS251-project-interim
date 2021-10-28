@@ -95,9 +95,12 @@ public:
 	//get,set province
 	string getProvince();
 	void setProvince(string newProvince);
+    
+    friend bool operator <(const DomesticStudent &s1, const DomesticStudent &s2);
+    
+    friend bool operator <=(const DomesticStudent &s1, const DomesticStudent &s2);
 
 	friend ostream& operator <<(ostream& out, const DomesticStudent& p);
-
 
 
 private:
@@ -116,6 +119,10 @@ public:
 	//get,set toefl
 	ToeflScore getToefl();
 	void setToefl(ToeflScore newToefl);
+    
+    friend bool operator <(const InternationalStudent &s1, const InternationalStudent &s2);
+    
+    friend bool operator <=(const InternationalStudent &s1, const InternationalStudent &s2);
 
 	friend ostream& operator <<(ostream& out, const InternationalStudent& p);
 
