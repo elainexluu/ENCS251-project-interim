@@ -1,6 +1,7 @@
 // student.cpp to implement your classes
 #include "student.hpp"
 #include <iostream>
+#include <vector>
 
 //STUDENT FUNCTIONS ---------------------------------------------------------------------------
 
@@ -12,11 +13,11 @@ Student::Student() {
 Student::Student(string _firstName, string _lastName, float _cgpa, int _researchScore, int _applicationID) {
 	//setFirstName(_firstName);
 
-	 firstName = _firstName;
-	 lastName = _lastName;
-	 cgpa = _cgpa;
-	 researchScore = _researchScore;
-	 applicationID = _applicationID;
+	firstName = _firstName;
+	lastName = _lastName;
+	cgpa = _cgpa;
+	researchScore = _researchScore;
+	applicationID = _applicationID;
 
 	//setLastName(_lastName);
 	//setCGPA(_cgpa);
@@ -88,9 +89,9 @@ string compareCGPA(const Student& stu1, const Student& stu2) {
 	if (stu1.cgpa < stu2.cgpa) {
 		return "<";
 	}
-    
-    return "null";  // had to add to get rid of error
-                    // non-void function does not return a value in all control paths
+
+	return "null";  // had to add to get rid of error
+					// non-void function does not return a value in all control paths
 }
 
 string compareResearchScore(const Student& stu1, const Student& stu2) {
@@ -108,9 +109,9 @@ string compareResearchScore(const Student& stu1, const Student& stu2) {
 	if (stu1.researchScore < stu2.researchScore) {
 		return "<";
 	}
-    
-    return "null";  // had to add to get rid of error
-                    // non-void function does not return a value in all control paths
+
+	return "null";  // had to add to get rid of error
+					// non-void function does not return a value in all control paths
 }
 
 string compareFirstName(const Student& stu1, const Student& stu2) {
@@ -255,44 +256,115 @@ void DomesticStudent::setProvince(string newProvince) {
 }
 
 
+vector<DomesticStudent> sortDomesticStudents(vector<DomesticStudent> students, int option)
+{
+	DomesticStudent currentStudent;
+	DomesticStudent nextStudent;
+
+	int currentPlace = 0;
+	bool anyChanges = true;
+
+	while (anyChanges == true) {
+
+		anyChanges = false;
+
+		for (int i = 0; i < students.size() - 1; i++) {
+
+			currentStudent = students[i];
+			nextStudent = students[i + 1];
+
+			//compare CGPA (option 1)
+			if (option == 1 && compareCGPA(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getCGPA() << " < " << nextStudent.getCGPA() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare research score (option 2)
+			if (option == 2 && compareResearchScore(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getResearchScore() << " < " << nextStudent.getResearchScore() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare first name (option 3)
+			if (option == 3 && compareFirstName(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getFirstName() << " < " << nextStudent.getFirstName() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare last name (option 4)
+			if (option == 4 && compareLastName(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getLastName() << " < " << nextStudent.getLastName() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+		}
+		//cout << "done loop" << anyChanges << endl;
+	}
+
+
+
+
+	//cout << "done" << endl;
+	return students;
+}
+
 // overloaded < operator
 // compares researchScore, cgpa, province for domestic students
-bool operator <(const DomesticStudent &s1, const DomesticStudent &s2) {
-    
-    // convert provinces to lowercase
-    // from compareFirstName and commpareLastName functions
-    
-    std::string province1;
-    std::string province2;
-    
-    for (int i = 0; i < s1.province.length(); i++) {
-            province1 += tolower(s1.province[i]);
-    }
+bool operator <(const DomesticStudent& s1, const DomesticStudent& s2) {
 
-    for (int i = 0; i < s2.province.length(); i++) {
-            province2 += tolower(s2.province[i]);
-    }
-    
-    if (s2.researchScore < s1.researchScore) {
-        return true;
-    }
-    else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
-        return true;
-    }
-    else if (( (s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa) ) && (province1 < province2 )) {
-        return true;
-    }
-    else
-        return false;
-    
+	// convert provinces to lowercase
+	// from compareFirstName and commpareLastName functions
+
+	std::string province1;
+	std::string province2;
+
+	for (int i = 0; i < s1.province.length(); i++) {
+		province1 += tolower(s1.province[i]);
+	}
+
+	for (int i = 0; i < s2.province.length(); i++) {
+		province2 += tolower(s2.province[i]);
+	}
+
+	if (s2.researchScore < s1.researchScore) {
+		return true;
+	}
+	else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
+		return true;
+	}
+	else if (((s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa)) && (province1 < province2)) {
+		return true;
+	}
+	else
+		return false;
+
 }
 
 // overloaded <= operator
 // compares researchScore, cgpa, province for domestic students
-bool operator <=(const DomesticStudent &s1, const DomesticStudent &s2) {
-    
-    return !(s2 < s1);
-    
+bool operator <=(const DomesticStudent& s1, const DomesticStudent& s2) {
+
+	return !(s2 < s1);
+
 }
 
 
@@ -333,40 +405,40 @@ void InternationalStudent::setToefl(ToeflScore newToefl)
 
 // overloaded < operator
 // compares researchScore, cgpa, country for international students
-bool operator <(const InternationalStudent &s1, const InternationalStudent &s2) {
-    
-    // convert countries to lowercase
-    // from compareFirstName and commpareLastName functions
-    
-    std::string country1;
-    std::string country2;
-    
-    for (int i = 0; i < s1.country.length(); i++) {
-            country1 += tolower(s1.country[i]);
-    }
+bool operator <(const InternationalStudent& s1, const InternationalStudent& s2) {
 
-    for (int i = 0; i < s2.country.length(); i++) {
-            country2 += tolower(s2.country[i]);
-    }
-    
-    if (s2.researchScore < s1.researchScore) {
-        return true;
-    }
-    else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
-        return true;
-    }
-    else if (( (s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa) ) && (country1 < country2 )) {
-        return true;
-    }
-    else
-        return false;
+	// convert countries to lowercase
+	// from compareFirstName and commpareLastName functions
+
+	std::string country1;
+	std::string country2;
+
+	for (int i = 0; i < s1.country.length(); i++) {
+		country1 += tolower(s1.country[i]);
+	}
+
+	for (int i = 0; i < s2.country.length(); i++) {
+		country2 += tolower(s2.country[i]);
+	}
+
+	if (s2.researchScore < s1.researchScore) {
+		return true;
+	}
+	else if ((s2.researchScore == s1.researchScore) && (s2.cgpa < s1.cgpa)) {
+		return true;
+	}
+	else if (((s2.researchScore == s1.researchScore) && (s2.cgpa == s1.cgpa)) && (country1 < country2)) {
+		return true;
+	}
+	else
+		return false;
 }
 
 // overloaded <= operator
 // compares researchScore, cgpa, country for international students
-bool operator <=(const InternationalStudent &s1, const InternationalStudent &s2) {
+bool operator <=(const InternationalStudent& s1, const InternationalStudent& s2) {
 
-    return !(s2 < s1);
+	return !(s2 < s1);
 }
 
 
@@ -456,7 +528,7 @@ void ToeflScore::setTotalScore() {
 ostream& operator<<(ostream& out, const DomesticStudent& p)
 {
 
-	out << "Name of Domestic student: " << p.applicationID - 20210000 << ", is " <<  p.firstName << " " << p.lastName << endl;
+	out << "Name of Domestic student: " << p.applicationID - 20210000 << ", is " << p.firstName << " " << p.lastName << endl;
 
 	out << "Their CGPA " << " is " << p.cgpa << endl;
 
@@ -479,7 +551,7 @@ ostream& operator<<(ostream& out, const InternationalStudent& p)
 
 	int x = t.getTotalScore();
 
-	 
+
 	out << "Name of International student: " << p.applicationID - 20210100 << ", is " << p.firstName << " " << p.lastName << endl;
 
 	out << "Their CGPA " << " is " << p.cgpa << endl;
@@ -492,4 +564,75 @@ ostream& operator<<(ostream& out, const InternationalStudent& p)
 
 
 	return out;
+}
+
+vector<InternationalStudent> sortInternationalStudents(vector<InternationalStudent> students, int option)
+{
+	InternationalStudent currentStudent;
+	InternationalStudent nextStudent;
+
+	int currentPlace = 0;
+	bool anyChanges = true;
+
+	while (anyChanges == true) {
+
+		anyChanges = false;
+
+		for (int i = 0; i < students.size() - 1; i++) {
+
+			currentStudent = students[i];
+			nextStudent = students[i + 1];
+
+			//compare CGPA (option 1)
+			if (option == 1 && compareCGPA(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getCGPA() << " < " << nextStudent.getCGPA() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare research score (option 2)
+			if (option == 2 && compareResearchScore(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getResearchScore() << " < " << nextStudent.getResearchScore() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare first name (option 3)
+			if (option == 3 && compareFirstName(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getFirstName() << " < " << nextStudent.getFirstName() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+
+			//compare last name (option 4)
+			if (option == 4 && compareLastName(currentStudent, nextStudent) == "<") {
+
+				//cout << i << ": " << currentStudent.getLastName() << " < " << nextStudent.getLastName() << endl;
+
+				students[i] = nextStudent;
+				students[i + 1] = currentStudent;
+
+				anyChanges = true;
+			}
+		}
+		//cout << "done loop" << anyChanges << endl;
+	}
+
+
+
+
+	//cout << "done" << endl;
+	return students;
 }

@@ -5,6 +5,7 @@
 using namespace std; //use namespace std
 #include <string> //you will have to use string in C++
 #include <sstream>
+#include <vector>
 
 
 
@@ -95,10 +96,15 @@ public:
 	//get,set province
 	string getProvince();
 	void setProvince(string newProvince);
-    
-    friend bool operator <(const DomesticStudent &s1, const DomesticStudent &s2);
-    
-    friend bool operator <=(const DomesticStudent &s1, const DomesticStudent &s2);
+
+	//One Category Sort, for number 5
+	friend vector <DomesticStudent> sortDomesticStudents(vector <DomesticStudent> students, int option);
+
+
+
+	friend bool operator <(const DomesticStudent& s1, const DomesticStudent& s2);
+
+	friend bool operator <=(const DomesticStudent& s1, const DomesticStudent& s2);
 
 	friend ostream& operator <<(ostream& out, const DomesticStudent& p);
 
@@ -119,12 +125,16 @@ public:
 	//get,set toefl
 	ToeflScore getToefl();
 	void setToefl(ToeflScore newToefl);
-    
-    friend bool operator <(const InternationalStudent &s1, const InternationalStudent &s2);
-    
-    friend bool operator <=(const InternationalStudent &s1, const InternationalStudent &s2);
+
+	friend bool operator <(const InternationalStudent& s1, const InternationalStudent& s2);
+
+	friend bool operator <=(const InternationalStudent& s1, const InternationalStudent& s2);
 
 	friend ostream& operator <<(ostream& out, const InternationalStudent& p);
+
+	//One Category Sort, for number 5
+	friend vector <InternationalStudent> sortInternationalStudents(vector <InternationalStudent> students, int option);
+
 
 
 protected:
