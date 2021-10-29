@@ -441,6 +441,37 @@ bool operator <=(const InternationalStudent& s1, const InternationalStudent& s2)
 	return !(s2 < s1);
 }
 
+// function to check if international students meet the minimum toefl requirements
+bool compareToeflScore(const InternationalStudent &s) {
+
+    ToeflScore t = s.toefl;
+
+    t.setTotalScore();
+
+    int total = t.getTotalScore();
+    
+    int read = t.getReading();
+    
+    int listen = t.getListening();
+    
+    int speak = t.getSpeaking();
+    
+    int write = t.getWriting();
+    
+    // check if the student's total toefl score is less than 93
+    if ( (total < 93) )
+    {
+        return false;
+    }
+    
+    if ((read < 20) || (listen < 20) || (speak < 20) || (write < 20)) {
+        return false;
+    }
+    else {
+        return true;
+    }
+    
+}
 
 //TOEFL SCORE FUNCTIONS -----------------------------------------------------------------------
 

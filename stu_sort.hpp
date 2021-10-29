@@ -1,9 +1,14 @@
 //header file stu_sort.hpp to declare your sorting functions
+#include "student.hpp"
 #include <string> //you will have to use string in C++
 #include <vector>
 #include <iterator>
 
 // OVERALL SORT FUNCTION -----------------------------------------------------------------------
+
+vector<DomesticStudent> overallSort(vector<DomesticStudent> const &intStudent);
+
+vector<InternationalStudent> overallSort(vector<InternationalStudent> const &intStudent);
 
 // using function templates so it sorts either DomesticStudent type or InternationalStudent type
 // where T is a type parameter and can be replaced by any type
@@ -72,22 +77,6 @@ void quicksortV(typename std::vector<T>& student, int indexOfLow, int indexOfHig
         // sorts after partition
         quicksortV(student, partIndex + 1, indexOfHigh);
     }
-}
-
-// overall sort function
-template <typename T>
-typename std::vector<T> overallSort(typename std::vector<T> const& intStudent) {    // pass by constant reference
-
-    typename std::vector<T> v;
-
-    int vecSize = static_cast<int>(intStudent.size());
-
-    v = intStudent;
-
-    quicksortV(v, 0, vecSize - 1);  // call to quicksort with indicies of the leftmost and rightmost elements
-
-    return v;
-
 }
 
 // note (if any confusion):

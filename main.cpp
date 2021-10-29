@@ -216,8 +216,6 @@ int main() {
 
     cout << "\n" << "TESTING OVERALL SORT FOR DOMESTIC STUDENTS " << "\n\n";
 
-    // note that the input vector remains unchanged
-
     vector<DomesticStudent> sorted_domestic_students_vector;
 
     sorted_domestic_students_vector = overallSort(domestic_students_vector);
@@ -225,14 +223,20 @@ int main() {
     for (int i = 0; i < sorted_domestic_students_vector.size(); i++) {
         cout << sorted_domestic_students_vector[i] << endl;
     }
+    
+    // check that sorted doesn't alter input
+    
+//    cout << "\n\n" << "Original Domestic Students" << "\n\n";
+//
+//    for (int i = 0; i< domestic_students_vector.size(); i++) {
+//        cout << domestic_students_vector[i] << endl;
+//    }
 
     cout << "________________________________________" << "\n\n";
 
     // TESTING OVERALL SORT FOR INTERNATIONAL STUDENTS -----------------------------------------------------------------------
 
     cout << "TESTING OVERALL SORT FOR INTERNATIONAL STUDENTS" << "\n\n";
-
-    // note that the input vector remains unchanged
 
     vector<InternationalStudent> sorted_international_students_vector;
 
@@ -241,7 +245,14 @@ int main() {
     for (int i = 0; i < sorted_international_students_vector.size(); i++) {
         cout << sorted_international_students_vector[i] << endl;
     }
-
+    
+    // check that sorted / erase doesn't alter input
+    
+//    cout << "\n\n" << "Original International Students" << "\n\n";
+//
+//    for (int i = 0; i< international_students_vector.size(); i++) {
+//        cout << international_students_vector[i] << endl;
+//    }
 
     // MENU FOR SORT FOR NUMBER 5
 

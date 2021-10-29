@@ -101,7 +101,6 @@ public:
 	friend vector <DomesticStudent> sortDomesticStudents(vector <DomesticStudent> students, int option);
 
 
-
 	friend bool operator <(const DomesticStudent& s1, const DomesticStudent& s2);
 
 	friend bool operator <=(const DomesticStudent& s1, const DomesticStudent& s2);
@@ -129,6 +128,8 @@ public:
 	friend bool operator <(const InternationalStudent& s1, const InternationalStudent& s2);
 
 	friend bool operator <=(const InternationalStudent& s1, const InternationalStudent& s2);
+    
+    friend bool compareToeflScore(const InternationalStudent &s);
 
 	friend ostream& operator <<(ostream& out, const InternationalStudent& p);
 
